@@ -6,7 +6,6 @@ end
 
 def restart_game
  @running = false
- alert("boom")
  clear_game
  init
  run_game
@@ -23,7 +22,7 @@ def init
   car_spacing = 100
 
   (0..20).each do |i|
-    flow {line 0,i * 60, width, i * 60}
+    @lines = flow {line 0,i * 60, width, i * 60}
   end
   @frog = oval 10, 550, 40
 
@@ -91,6 +90,11 @@ def run_game
         if car.top + collision_size_top > @frog.top && car.top - collision_size_top < @frog.top && car.left + collision_size_right > @frog.left && car.left - collision_size_right < @frog.left
           restart_game
         end
+      end
+
+      if @frog.top < 100
+        alert "You won!"
+        restart_game
       end
     end
   end
