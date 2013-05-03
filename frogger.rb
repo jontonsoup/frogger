@@ -92,7 +92,7 @@ def run_game
         end
       end
 
-      if @frog.top < 100
+      if @frog.top < 60
         alert "You won!"
         restart_game
       end
