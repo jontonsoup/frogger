@@ -1,4 +1,4 @@
-Shoes.app(:width => 550, :height => 550, :resizable => false) do
+Shoes.app(:width => 550, :height => 600, :resizable => false) do
   init
   @running = false
   run_game
@@ -25,18 +25,20 @@ def init
   (0..20).each do |i|
     flow {line 0,i * 60, width, i * 60}
   end
-  @frog = oval 10, 510, 40
+  @frog = oval 10, 550, 40
 
   @right_moving_cars = []
   (0..4).each do |i|
     offset = i * 300 * rand
-    @right_moving_cars << rect(offset, i * car_spacing, 50, 10)
+    top_offset = (100 + i * car_spacing)
+    @right_moving_cars << rect(offset, top_offset, 50, 10)
   end
 
   @left_moving_cars = []
   (0..4).each do |i|
     offset = i * 300 * rand
-    @left_moving_cars << rect(offset, i * car_spacing + 30, 50, 10)
+    top_offset = (130 + i * car_spacing)
+    @left_moving_cars << rect(offset, top_offset, 50, 10)
   end
 end
 
